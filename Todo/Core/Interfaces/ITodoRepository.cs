@@ -8,5 +8,8 @@ namespace Todo.Core.Interfaces
     {
         Task<TodoModel> GetByIdAsync(int id);
         Task<IReadOnlyList<TodoModel>> GetAllAsync();
+        Task AddAsync(TodoModel newTodo);
+        Task UpdateAsync(TodoModel newTodo);
+        Task DeleteAsync(int id);
     }
 }

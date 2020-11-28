@@ -19,7 +19,7 @@ namespace Todo
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ITodoRepository, Core.Models.TodoRepository>();
             services.AddSwaggerGen(c =>
