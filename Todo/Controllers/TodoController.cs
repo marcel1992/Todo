@@ -30,7 +30,7 @@ namespace Todo.Controllers
             return Ok();
         }
 
-        [HttpPut("~/api/update")]
+        [HttpPut("~/api/edit")]
         public async Task<ActionResult> UpdateTodoAsync([FromBody] TodoModel modifiedTodo)
         {
             await _repository.UpdateAsync(modifiedTodo);
