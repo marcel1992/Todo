@@ -26,6 +26,13 @@ namespace Todo
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo", Version = "v1" });
             });
+            services.AddCors(o => o.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyMethod().AllowAnyHeader()
+                           .WithOrigins("http://localhost:3000")
+                           .AllowCredentials();
+                }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +50,8 @@ namespace Todo
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
