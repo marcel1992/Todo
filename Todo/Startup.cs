@@ -30,7 +30,7 @@ namespace Todo
                 builder =>
                 {
                     builder.AllowAnyMethod().AllowAnyHeader()
-                           .WithOrigins("http://localhost:3000")
+                           .WithOrigins("http://localhost:3001")
                            .AllowCredentials();
                 }));
         }
