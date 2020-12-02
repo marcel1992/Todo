@@ -9,7 +9,7 @@ using Todo.Data;
 namespace Todo.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20201125173043_InitialCreate")]
+    [Migration("20201202184401_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,9 @@ namespace Todo.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
                         .HasColumnType("TEXT");

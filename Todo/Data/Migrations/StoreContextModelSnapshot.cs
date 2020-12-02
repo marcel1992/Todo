@@ -22,6 +22,9 @@ namespace Todo.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Color")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Content")
                         .HasColumnType("TEXT");
 
