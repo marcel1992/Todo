@@ -9,7 +9,7 @@ using Todo.Data;
 namespace Todo.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20201202184401_InitialCreate")]
+    [Migration("20201202193423_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
