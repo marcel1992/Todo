@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Todo.Core.Interfaces;
@@ -27,6 +28,7 @@ namespace Todo.Core.Models
         }
         public async Task AddAsync(TodoModel newTodo)
         {
+            newTodo.CreationDate = newTodo.LastEditDate = DateTime.Now;
             _context.Todos.Add(newTodo);
             await _context.SaveChangesAsync();
         }

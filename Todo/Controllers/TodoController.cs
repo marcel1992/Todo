@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Todo.Core.Interfaces;
@@ -30,10 +31,17 @@ namespace Todo.Controllers
             return Ok();
         }
 
-        [HttpPut("~/api/edit")]
-        public async Task<ActionResult> UpdateTodoAsync([FromBody] TodoModel modifiedTodo)
+        [HttpPatch("~/api/edit/{id}")]
+        public async Task<ActionResult> UpdateTodoAsync(int id,[FromBody] Newtonsoft.Json.Linq.JObject modifiedContent)
         {
-            await _repository.UpdateAsync(modifiedTodo);
+            var content = modifiedContent.Value<string>("content");
+            var modifiedTodo = await _repository.GetByIdAsync(id);
+            if(modifiedTodo != null)
+            {
+                modifiedTodo.Content = content;
+                modifiedTodo.LastEditDate = DateTime.Now;
+                await _repository.UpdateAsync(modifiedTodo);
+            }
             return Ok();
         }
 
